@@ -1,0 +1,7 @@
+Changes
+Makefile.PL
+MANIFEST
+README
+t/CGI-Session-Serialize-yaml.t
+lib/CGI/Session/Serialize/yaml.pm
+META.yml                                 Module meta-data (added by MakeMaker)
