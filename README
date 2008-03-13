@@ -1,40 +1,57 @@
-CGI-Session-Serialize-yaml version 0.01
-=======================================
+NAME
+    CGI::Session - persistent session data in CGI applications
 
-The README is used to introduce the module and provide instructions on
-how to install the module, any machine dependencies it may have (for
-example C compilers and installed libraries) and any other information
-that should be provided before the module is installed.
+SYNOPSIS
+        # Object initialization:
+        use CGI::Session;
+        $session = new CGI::Session();
 
-A README file is required for CPAN modules since CPAN extracts the
-README file from a module distribution so that people browsing the
-archive can use it get an idea of the modules uses. It is usually a
-good idea to provide version information here so that people can
-decide whether fixes for the module are worth downloading.
+        $CGISESSID = $session->id();
 
-INSTALLATION
+        # send proper HTTP header with cookies:
+        print $session->header();
 
-To install this module type the following:
+        # storing data in the session
+        $session->param('f_name', 'Sherzod');
+        # or
+        $session->param(-name=>'l_name', -value=>'Ruzmetov');
 
-   perl Makefile.PL
-   make
-   make test
-   make install
+        # retrieving data
+        my $f_name = $session->param('f_name');
+        # or
+        my $l_name = $session->param(-name=>'l_name');
 
-DEPENDENCIES
+        # clearing a certain session parameter
+        $session->clear(["l_name", "f_name"]);
 
-This module requires these other modules and libraries:
+        # expire '_is_logged_in' flag after 10 idle minutes:
+        $session->expire('is_logged_in', '+10m')
 
-  blah blah blah
+        # expire the session itself after 1 idle hour
+        $session->expire('+1h');
 
-COPYRIGHT AND LICENCE
+        # delete the session for good
+        $session->delete();
 
-Put the correct copyright and licence information here.
+DESCRIPTION
+    CGI-Session is a Perl5 library that provides an easy, reliable and modular
+    session management system across HTTP requests. Persistency is a key feature
+    for such applications as shopping carts, login/authentication routines, and
+    application that need to carry data across HTTP requests. CGI::Session does
+    that and many more.
 
-Copyright (C) 2006 by Tyler MacDonald
+COPYRIGHT
+    Copyright (C) 2001-2005 Sherzod Ruzmetov <sherzodr@cpan.org>. All rights reserved.
+    This library is free software. You can modify and or distribute it under the same
+    terms as Perl itself.
 
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself, either Perl version 5.8.7 or,
-at your option, any later version of Perl 5 you may have available.
+AUTHOR
+    Sherzod Ruzmetov <sherzodr@cpan.org>, http://author.handalak.com/
 
+SEE ALSO
+    *   CGI::Session::Tutorial - extended CGI::Session manual
+    *   RFC 2965 - "HTTP State Management Mechanism" found at
+        ftp://ftp.isi.edu/in-notes/rfc2965.txt
+    *   CGI - standard CGI library
+    *   Apache::Session - another fine alternative to CGI::Session
 

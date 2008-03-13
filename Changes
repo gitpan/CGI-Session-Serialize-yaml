@@ -1,6 +1,10 @@
-Revision history for Perl extension CGI::Session::Serialize::yaml.
+CGI::Session::Serialize::yaml Change Log
+========================================
 
-0.01  Wed Feb 15 10:46:31 2006
-	- original version; created by h2xs 1.23 with options
-		-AXP -b 5.6.0 CGI::Session::Serialize::yaml
+4.21 - Thursday, March 13, 2008
 
+    * NEW: Create separate distro for this module by cutting it out of CGI::Session V 4.21.
+           The requirement is for CGI::Session V 4.20 to be pre-installed so that you can
+           install this module on top of CGI::Session without needing to upgrade to V 4.21.
+           Of course there is no point in that, since V 4.20 already includes this module's
+           code, but it allows you to reassure yourself that this distro does install ok

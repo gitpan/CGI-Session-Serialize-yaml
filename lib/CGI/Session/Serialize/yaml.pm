@@ -2,30 +2,26 @@ package CGI::Session::Serialize::yaml;
 
 use strict;
 use CGI::Session::ErrorHandler;
-use YAML ();
 
-our $SYCK = eval "use YAML::Syck (); 1;";
-
-$CGI::Session::Serialize::yaml::VERSION = '1.0';
+$CGI::Session::Serialize::yaml::VERSION = '4.21';
 @CGI::Session::Serialize::yaml::ISA     = ( "CGI::Session::ErrorHandler" );
+our $Flavour;
+
+unless($Flavour) {
+    my $package = (grep { eval("use $_ (); 1;") } qw(YAML::Syck YAML))[0]
+        or die "Either YAML::Syck or YAML are required to use ", __PACKAGE__;
+    $Flavour = $package;
+}
 
 sub freeze {
     my ($self, $data) = @_;
-    if($SYCK) {
-        return YAML::Syck::Dump($data);
-    } else {
-        return YAML::Dump($data);
-    }
+    return $Flavour->can('Dump')->($data);
 }
 
 
 sub thaw {
     my ($self, $string) = @_;
-    if($SYCK) {
-        return (YAML::Syck::Load($string))[0];
-    } else {
-        return (YAML::Load($string))[0];
-    }
+    return ($Flavour->can('Load')->($string))[0];
 }
 
 1;
@@ -40,11 +36,15 @@ CGI::Session::Serialize::yaml - serializer for CGI::Session
 
 =head1 DESCRIPTION
 
-This library can be used by CGI::Session to serialize session data. Uses
-L<YAML|YAML>, or the faster C implementation, L<YAML::Syck|YAML::Syck>
+This library can be used by CGI::Session to serialize session data. It uses
+C<YAML>, or the faster C implementation, C<YAML::Syck>
 if it is available. YAML serializers exist not just for Perl but also other
 dynamic languages, such as PHP, Python, and Ruby, so storing session data
 in this format makes it easy to share session data across different languages.
+
+YAML is made to be friendly for humans to parse as well as other computer
+languages. It creates a format that is easier to read than the default
+serializer.
 
 =head1 METHODS
 
@@ -56,19 +56,12 @@ Receives two arguments. First is the class name, the second is the data to be se
 
 =item thaw($class, $string)
 
-Received two arguments. First is the class name, second is the I<YAML> data string. Should return thawed data structure on success, undef on failure. Error message should be set using C<set_error()|CGI::Session::ErrorHandler/"set_error()">
+Received two arguments. First is the class name, second is the C<YAML> data string. Should return thawed data structure on success, undef on failure. Error message should be set using C<set_error()|CGI::Session::ErrorHandler/"set_error()">
 
 =back
 
-=head1 LICENSE
-
-Copyright 2006 Tyler "Crackerjack" MacDonald <japh@crackerjack.net>
-
-This is free software; You may distribute it under the same terms as perl
-itself.
-
 =head1 SEE ALSO
 
-L<CGI::Session>, L<YAML>, L<YAML::Syck>.
+C<CGI::Session>, C<YAML>, C<YAML::Syck>.
 
 =cut

@@ -1,15 +1,40 @@
-use 5.006;
+# $Id: Makefile.PL 336 2006-10-26 02:17:31Z markstos $
+
+use strict;
+use File::Spec;
+use lib './t/lib';
 use ExtUtils::MakeMaker;
-# See lib/ExtUtils/MakeMaker.pm for details of how to influence
-# the contents of the Makefile that is written.
+
 WriteMakefile(
-    NAME              => 'CGI::Session::Serialize::yaml',
-    VERSION_FROM      => 'lib/CGI/Session/Serialize/yaml.pm', # finds $VERSION
-    PREREQ_PM         => {
-        'CGI::Session'  =>  4,
-        YAML    =>  '0.50',
-    }, # e.g., Module::Name => 1.1
-    ($] >= 5.005 ?     ## Add these new keywords supported since 5.005
-      (ABSTRACT_FROM  => 'lib/CGI/Session/Serialize/yaml.pm', # retrieve abstract from module
-       AUTHOR         => 'Tyler MacDonald <japh@crackerjack.net>') : ()),
+    NAME => 'CGI::Session::Serialize::yaml',
+    VERSION_FROM => 'lib/CGI/Session/Serialize/yaml.pm',
+    PREREQ_PM => {
+        'CGI::Session' => '4.20',
+        'File::Spec'   => undef,
+        'Test::More'   => undef,
+    },
+    ABSTRACT => 'Persistent session data in CGI applications',
+    AUTHOR => 'Sherzod Ruzmetov <sherzodr@cpan.org>',
+    clean => { FILES => [ 't/cgisess.*', 't/sessiondata' ] },
 );
+
+#
+# Creating place for test-scripts. Some of the scripts needs this to be present
+#
+mkdir(File::Spec->catfile('t', 'sessiondata'));
+
+package MY;
+use strict;
+
+sub postamble {
+    return <<'MAKE_TEXT';
+prepare_dist ::	metafile manifest dist
+	$(NOECHO) $(NOOP)
+MAKE_TEXT
+}
+
+sub libscan {
+    my ($self, $path) = @_;
+    return '' if $path =~ m/\.svn/;
+    return $path;
+}

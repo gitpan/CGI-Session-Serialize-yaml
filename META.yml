@@ -1,12 +1,23 @@
-# http://module-build.sourceforge.net/META-spec.html
-#XXXXXXX This is a prototype!!!  It will change in the future!!! XXXXX#
-name:         CGI-Session-Serialize-yaml
-version:      1.0
-version_from: lib/CGI/Session/Serialize/yaml.pm
-installdirs:  site
+---
+name: CGI-Session-Serialize-yaml
+version: 4.21
+author:
+  - 'Ron Savage <ron@savage.net.au>'
+abstract: Add YAML and YAML::Syck support to CGI::Session's serializers
+license: artistic
+resources:
+  license: http://opensource.org/licenses/artistic-license.php
 requires:
-    CGI::Session:                  4
-    YAML:                          0.50
-
-distribution_type: module
-generated_by: ExtUtils::MakeMaker version 6.30
+  CGI::Session: 4.20
+  File::Spec: 0
+build_requires:
+  Test::More: 0
+  Test::Pod: 0
+provides:
+  CGI::Session::Serialize::yaml:
+    file: lib/CGI/Session/Serialize/yaml.pm
+    version: 4.21
+generated_by: Module::Build version 0.2808
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.2.html
+  version: 1.2

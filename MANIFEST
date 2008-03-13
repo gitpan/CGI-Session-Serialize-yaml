@@ -1,7 +1,10 @@
+Build.PL
 Changes
-Makefile.PL
-MANIFEST
-README
-t/CGI-Session-Serialize-yaml.t
+INSTALL
 lib/CGI/Session/Serialize/yaml.pm
-META.yml                                 Module meta-data (added by MakeMaker)
+Makefile.PL
+MANIFEST			This list of files
+README
+t/g4_dbfile_yaml.t
+t/pod.t
+META.yml
