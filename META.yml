@@ -1,6 +1,6 @@
 ---
 name: CGI-Session-Serialize-yaml
-version: 4.22
+version: 4.23
 author:
   - 'Ron Savage <ron@savage.net.au>'
 abstract: Add YAML and YAML::Syck support to CGI::Session's serializers
@@ -17,7 +17,7 @@ build_requires:
 provides:
   CGI::Session::Serialize::yaml:
     file: lib/CGI/Session/Serialize/yaml.pm
-    version: 4.22
+    version: 4.23
 generated_by: Module::Build version 0.280801
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.2.html

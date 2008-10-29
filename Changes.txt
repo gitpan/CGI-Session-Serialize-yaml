@@ -1,6 +1,9 @@
 CGI::Session::Serialize::yaml Change Log
 ========================================
 
+4.23 - Thursday, October 30, 2008
+	* FIX: Requote the module names in Build.PL and Makefile.PL to keep earlier Perls happy
+
 4.22 - Tuesday, July 22, 2008
 	* FIX:      Patch Build.PL and Makefile.PL to list all dependencies,
 	  			and to specify a version of CGI::Session after this code was split out,
