@@ -1,6 +1,15 @@
 CGI::Session::Serialize::yaml Change Log
 ========================================
 
+4.22 - Tuesday, July 22, 2008
+	* FIX:      Patch Build.PL and Makefile.PL to list all dependencies,
+	  			and to specify a version of CGI::Session after this code was split out,
+				so installing this module will trigger installation of a version of
+				CGI::Session without it (this module). See RT#40056.
+				Reported, with suggested patch, by Ryan Higgins
+    * INTERNAL: Rename Changes to Changes.txt to match my other modules
+    * INTERNAL: Add Changelog.ini
+
 4.21 - Thursday, March 13, 2008
 
     * NEW: Create separate distro for this module by cutting it out of CGI::Session V 4.21.

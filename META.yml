@@ -1,6 +1,6 @@
 ---
 name: CGI-Session-Serialize-yaml
-version: 4.21
+version: 4.22
 author:
   - 'Ron Savage <ron@savage.net.au>'
 abstract: Add YAML and YAML::Syck support to CGI::Session's serializers
@@ -8,16 +8,17 @@ license: artistic
 resources:
   license: http://opensource.org/licenses/artistic-license.php
 requires:
-  CGI::Session: 4.20
-  File::Spec: 0
+  CGI::Session: 4.3
+  CGI::Session::ErrorHandler: 4.3
 build_requires:
+  File::Spec: 0
   Test::More: 0
   Test::Pod: 0
 provides:
   CGI::Session::Serialize::yaml:
     file: lib/CGI/Session/Serialize/yaml.pm
-    version: 4.21
-generated_by: Module::Build version 0.2808
+    version: 4.22
+generated_by: Module::Build version 0.280801
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.2.html
   version: 1.2
