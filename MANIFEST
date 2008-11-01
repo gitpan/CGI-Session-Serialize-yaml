@@ -8,6 +8,4 @@ MANIFEST			This list of files
 README
 t/g4_dbfile_yaml.t
 t/pod.t
-t/sessiondata/cgisess.db
-t/sessiondata/cgisess.db.lck
 META.yml

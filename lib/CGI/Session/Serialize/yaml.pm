@@ -3,7 +3,7 @@ package CGI::Session::Serialize::yaml;
 use strict;
 use CGI::Session::ErrorHandler;
 
-$CGI::Session::Serialize::yaml::VERSION = '4.23';
+$CGI::Session::Serialize::yaml::VERSION = '4.24';
 @CGI::Session::Serialize::yaml::ISA     = ( "CGI::Session::ErrorHandler" );
 our $Flavour;
 

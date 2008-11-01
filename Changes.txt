@@ -1,6 +1,12 @@
 CGI::Session::Serialize::yaml Change Log
 ========================================
 
+4.24 - Sunday, November 2, 2008
+	* FIX: Remove t/sessiondata/ before creating distro, since it is shipped as non-writable,
+	  which means testers can't create files in that dir, which means they - and I - get failure
+	  reports. Thanx to Andreas J. Koenig for reporting the problem.
+	  That'll teach me to run tests!
+
 4.23 - Thursday, October 30, 2008
 	* FIX: Requote the module names in Build.PL and Makefile.PL to keep earlier Perls happy
 
