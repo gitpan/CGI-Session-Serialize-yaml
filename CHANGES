@@ -1,5 +1,11 @@
 CGI::Session::Serialize::yaml Change Log
-========================================
+
+4.26  Wed Feb 10 13:52:41 2010
+	- Add META.yml. Update MANIFEST.SKIP. Add MANIFEST and MYMETA.yml.
+
+4.25  Fri Nov 13 13:20:00 2009
+	- Run dos2unix
+	- Rename Changes.txt to CHANGES
 
 4.24 - Sunday, November 2, 2008
 	* FIX: Remove t/sessiondata/ before creating distro, since it is shipped as non-writable,
